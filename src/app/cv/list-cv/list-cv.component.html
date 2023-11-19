@@ -1,0 +1,6 @@
+<ol class="list-group">
+  <app-item-cv
+    *ngFor="let person of personnes"
+    (selectedPersonne)="selectPersonne($event)"
+    [Personne]="person"></app-item-cv>
+</ol>
