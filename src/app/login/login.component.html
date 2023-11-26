@@ -1,8 +1,7 @@
-<!-- auth.component.html -->
 <div class="container mt-5">
-  <div class="card">
+  <div class="card custom-login-card">
     <div class="card-body">
-      <h2 class="card-title">Login</h2>
+      <h2 class="card-title text-center mb-4">Login</h2>
       <form (ngSubmit)="onSubmit()" #authForm="ngForm">
         <div class="mb-3">
           <label for="email" class="form-label">Email:</label>
@@ -15,7 +14,7 @@
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             required
             #email="ngModel"
-            [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched)  }"
+            [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }"
           />
           <div class="invalid-feedback">Please enter a valid email address.</div>
         </div>
@@ -36,7 +35,9 @@
           <div class="invalid-feedback">Password must be at least 4 characters.</div>
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid">Login</button>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid">Login</button>
+        </div>
       </form>
     </div>
   </div>

@@ -1,0 +1,76 @@
+/* Add these styles to your CSS file */
+
+.custom-container {
+  background-color: #f8f9fa; /* Light gray background color */
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  border-radius: 10px; /* Round the container edges */
+}
+
+.custom-header {
+  font-family: 'Verdana', sans-serif; /* Change the font family */
+  color: #007bff; /* Blue color */
+}
+
+.custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.custom-col {
+  margin: 10px;
+}
+
+.custom-card {
+  width: 300px;
+  text-align: left;
+  border-radius: 10px; /* Round the card edges */
+  overflow: hidden; /* Hide overflow for rounded corners */
+}
+
+.custom-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Round the image */
+}
+
+.custom-card-body {
+  padding: 10px;
+}
+
+.custom-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212529; /* Dark gray color */
+}
+
+.custom-description {
+  color: #6c757d; /* Gray color */
+}
+
+.custom-price {
+  color: #28a745; /* Green color */
+}
+
+.custom-discount {
+  color: #dc3545; /* Red color */
+}
+
+.custom-rating {
+  color: #ffc107; /* Yellow color */
+}
+
+.custom-btn {
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* White color */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}

@@ -1,20 +1,19 @@
-<div class="container mt-4">
-  <p class="h3 mb-4">Products List</p>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let product of products$ | async">
-      <div class="card mb-4 shadow-sm">
-        <img [src]="product.thumbnail" alt="{{ product.title }}" class="img-fluid">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <h5>{{product.brand}}</h5>
-          <h6>{{ product.category|titlecase }}</h6>
-          <p class="card-text">{{ product.description }}</p>
-          <p class="card-text">Price: ${{ product.price }}</p>
-          <p class="card-text">Discount Percentage: {{ product.discountPercentage }}</p>
-          <p class="card-text">Rating: {{ product.rating }}</p>
+<div class="custom-container mt-4">
+  <div class="custom-row">
+    <div class="custom-col" *ngFor="let product of products$ | async">
+      <div class="custom-card mb-4 shadow-sm">
+        <img [src]="product.thumbnail" alt="{{ product.title }}" class="custom-img">
+        <div class="custom-card-body">
+          <h3 class="custom-title">{{ product.title }}</h3>
+          <h4>{{ product.brand }}</h4>
+          <h5>{{ product.category | titlecase }}</h5>
+          <p class="custom-description">{{ product.description }}</p>
+          <p class="custom-price">Price: ${{ product.price }}</p>
+          <p class="custom-discount">Discount Percentage: {{ product.discountPercentage }}</p>
+          <p class="custom-rating">Rating: {{ product.rating }}</p>
         </div>
       </div>
     </div>
   </div>
-  <button (click)="loadMoreProducts()" class="btn btn-primary mb-4">Load More Products</button>
+  <button (click)="loadMoreProducts()" class="custom-btn">Load More Products</button>
 </div>

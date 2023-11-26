@@ -1,0 +1,29 @@
+.custom-top-modal {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* Adjust the z-index as needed */
+}
+
+.custom-long-modal {
+  max-width: 300px; /* Adjust the width as needed */
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Center the content vertically */
+}
+
+/* Adjust the styles for the modal header, body, and footer as needed */
+.custom-long-modal .modal-header,
+.custom-long-modal .modal-body,
+.custom-long-modal .modal-footer {
+  border-radius: 0; /* Square corners */
+}
+
+/* Center the buttons horizontally */
+.custom-long-modal .modal-footer {
+  display: flex;
+  justify-content: center;
+}

@@ -1,3 +1,19 @@
 .ng-invalid.ng-touched {
   border-color: red;
 }
+.custom-login-card {
+  max-width: 600px; /* Adjust the width as needed */
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  margin: auto; /* Center the card horizontally */
+}
+
+.custom-login-card .card-body {
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+/* Adjust the styles for the modal header, body, and footer as needed */
+.custom-login-card .card-header,
+.custom-login-card .card-footer {
+  border-radius: 0; /* Square corners */
+}

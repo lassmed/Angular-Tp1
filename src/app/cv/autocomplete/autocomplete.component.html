@@ -1,1 +1,19 @@
-<p>autocomplete works!</p>
+<input
+  type="text"
+   [(ngModel)]="chaine"
+   class="form-control"
+  (keyup)="search ()"
+>
+<ol>
+  <li
+    *ngFor="let personne of searchResult"
+    class="list-group-item"
+    (click)="selectPersonne(personne)"
+  >
+    <img src="assets/images/{{personne.path|defaultImage}}"
+    width="25px" height="25px"
+    alt="{{personne.firstname}}">
+    {{personne.name|titlecase}} {{personne.firstname|titlecase}}
+
+  </li>
+</ol>

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from "../services/products.service";
 import { BehaviorSubject, map, Observable, takeWhile } from "rxjs";
-import { Product } from "../model/Product";
-
+import {Product} from "../Models/Product";
+import {ProductsService} from "../products.service";
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit{
   private currentPage = 1;

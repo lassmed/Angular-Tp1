@@ -1,1 +1,30 @@
-<p>merge-scan-reduce works!</p>
+<div class="mb-4">
+  <label for="input1" class="form-label">Input 1:</label>
+  <div class="input-group">
+    <input type="number" id="input1" class="form-control" [formControl]="input1FormControl" />
+    <button class="btn btn-warning ms-2" (click)="terminateStream()">Terminate Stream 1</button>
+  </div>
+</div>
+
+<div class="mb-4">
+  <label for="input2" class="form-label">Input 2:</label>
+  <div class="input-group">
+    <input type="number" id="input2" class="form-control" [formControl]="input2FormControl" />
+    <button class="btn btn-warning ms-2" (click)="terminateStream()">Terminate Stream 2</button>
+  </div>
+</div>
+
+<div class="mb-4">
+  <h5 class="mb-3">Merge Result:</h5>
+  <p>{{ mergeResult }}</p>
+</div>
+
+<div class="mb-4">
+  <h5 class="mb-3">Scan Results:</h5>
+  <p>{{ scanResult }}</p>
+</div>
+
+<div class="mb-4">
+  <h5 class="mb-3">Reduce Result:</h5>
+  <p>{{ reduceResult }}</p>
+</div>

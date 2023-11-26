@@ -1,6 +1,6 @@
 <div>
   <span *ngFor="let person of personnes">
-    <img class="img-circle" src="{{ person.path | defaultImage }}" width="150px" height="150px" alt="{{ person.firstname }}">
+    <img class="img-circle" src="/assets/images/{{ person.path | defaultImage }}" width="150px" height="150px" alt="{{ person.firstname }}">
     {{ person.name | titlecase }} {{ person.firstname | titlecase }}
   </span>
 </div>

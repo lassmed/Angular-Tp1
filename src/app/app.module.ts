@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { CvComponent } from './cv/cv/cv.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
@@ -20,6 +19,9 @@ import { CvPageComponent } from './cv/cv-page/cv-page.component';
 import {HttpClient,HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthService} from "./cv/auth.service";
+import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
+import { MergeScanReduceComponent } from './merge-scan-reduce/merge-scan-reduce.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,9 @@ import {AuthService} from "./cv/auth.service";
     HeaderComponent,
     MiniWordComponent,
     CvPageComponent,
+    AutocompleteComponent,
+    MergeScanReduceComponent,
+    ProductsComponent,
     //HeaderComponent
   ],
   imports: [

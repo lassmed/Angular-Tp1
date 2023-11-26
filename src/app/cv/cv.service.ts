@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Person} from "../Models/Person";
 import {catchError, Observable, of, tap, throwError} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CvService {
 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private toastr : ToastrService) {
   }
   personnes : Person[]=[];
   getPersonnes(): Observable<Person[]> {
@@ -20,6 +21,11 @@ export class CvService {
       tap(data => this.personnes = data),
       catchError(error => {
         console.error('Error fetching data from the API:', error);
+        this.toastr.error('Cannot retrieve data from the API. Using fake data instead.', 'Error', {
+          closeButton: true,
+          timeOut: 5000, // milliseconds
+        });
+
         return of(this.getFakePersonnes());
       })
     );
@@ -27,7 +33,7 @@ export class CvService {
   getFakePersonnes(){
     return [
       new Person(1,'oumayma','ouerfeli',22,'assets/images/ouma.jpeg',1234,'Software Engineer'),
-      new Person(2,'mohamed','lasswed',22,'assets/images/lasss.jpeg',1111, 'Technician'),
+      new Person(2,'mohamed','lasswed',22,'assets/images/as.jpg',1111, 'Technician'),
       new Person(3,'ahmed','wesleti',22,'',1099, 'Web Developer')
     ];
   }
@@ -47,5 +53,10 @@ export class CvService {
         return of(error);
       })
     );
+  }
+  findByName(name:string) : Observable<Person[]>{
+    const filter = `{"where":{"name":{"like":"%${name}%"}}}`;
+    const params=new HttpParams().set('filter',filter);
+    return this.http.get<Person[]>(this.apiUrl,{params});
   }
 }

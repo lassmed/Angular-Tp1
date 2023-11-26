@@ -1,6 +1,20 @@
-<ol class="list-group">
-  <app-item-cv
-    *ngFor="let person of personnes"
-    (selectedPersonne)="selectPersonne($event)"
-    [Personne]="person"></app-item-cv>
-</ol>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="juniors-tab" data-bs-toggle="tab" data-bs-target="#juniors" type="button" role="tab" aria-controls="juniors" aria-selected="true">Juniors</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="seniors-tab" data-bs-toggle="tab" data-bs-target="#seniors" type="button" role="tab" aria-controls="seniors" aria-selected="false">Seniors</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane  show active" id="juniors" role="tabpanel" aria-labelledby="juniors-tab">
+    <ol class="list-group" >
+      <app-item-cv *ngFor="let person of getJuniors()" (selectedPersonne)="selectPersonne($event)" [Personne]="person"></app-item-cv>
+    </ol>
+  </div>
+  <div class="tab-pane  show active" id="seniors" role="tabpanel" aria-labelledby="seniors-tab">
+    <ol class="list-group">
+      <app-item-cv *ngFor="let person of getSeniors()" (selectedPersonne)="selectPersonne($event)" [Personne]="person" ></app-item-cv>
+    </ol>
+  </div>
+</div>

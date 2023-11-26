@@ -15,6 +15,12 @@
       <li class="nav-item ">
         <a class="nav-link" [routerLink]="['miniword']" routerLinkActive="active">Mini Word <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link" [routerLink]="['msr']" routerLinkActive="active">Merge Scan Reduce<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" [routerLink]="['products']" routerLinkActive="active">Products<span class="sr-only">(current)</span></a>
+      </li>
 
       <li class="nav-item " *ngIf="!isLoggedIn()">
         <a class="nav-link" [routerLink]="['login']" routerLinkActive="active">Login <span class="sr-only">(current)</span></a>
@@ -27,21 +33,24 @@
   </div>
 </nav>
 
-<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
+<div class="modal custom-top-modal custom-long-modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Logging out</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()" >
+        <h5 class="modal-title">Logout Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to logout ?</p>
+        <p>Are you sure you want to logout?</p>
       </div>
       <div class="modal-footer">
-        <button (click)="logout()" type="button" class="btn btn-primary" >Yes</button>
-        <button (click)="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button (click)="logout()" type="button" class="btn btn-danger">Yes, Logout</button>
+        <button (click)="closeModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
 </div>
+
+
