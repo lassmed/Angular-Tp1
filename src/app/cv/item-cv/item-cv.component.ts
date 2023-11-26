@@ -7,8 +7,9 @@ import {Person} from "../../Models/Person";
   styleUrls: ['./item-cv.component.css']
 })
 export class ItemCvComponent {
-  @Input() Personne:Person=new Person();
+  @Input() Personne!:Person;
   @Output() selectedPersonne =new EventEmitter();
+  
 
   selectPersonne() {
     this.selectedPersonne.emit(

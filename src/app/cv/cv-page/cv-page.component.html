@@ -1,0 +1,27 @@
+<div class="card m-2 c">
+  <div class="card-body" *ngIf="personne">
+    <img src="assets/images/{{personne.path|defaultImage}}" class="rounded-circle" height="100px" width="100px">
+    <div class="mb-3">
+      <label class="form-label">Name:</label>
+      <h6>{{personne.name}}</h6>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Firstname:</label>
+      <h6>{{personne.firstname}}</h6>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Job:</label>
+      <h6>{{personne.job}}</h6>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Age:</label>
+      <h6>{{personne.age}}</h6>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cin:</label>
+      <h6>{{personne.cin}}</h6>
+    </div>
+    <button (click)="deletePersonne() " routerLink="" class="btn btn-danger">Delete</button>
+
+  </div>
+</div>

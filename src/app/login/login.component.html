@@ -1,35 +1,43 @@
-<form #loginform ="ngForm">
-  <label for="email">
-    Email
-  </label>
-  <input
-     required
-    minlength="1"
-     ngModel name="mail"
-     #inputMail="ngModel"
-    type="text" id="email" class="form-control">
-  <div class="alert alert-danger" *ngIf="inputMail.invalid && inputMail.touched">
-    Votre mail n'est pas valide
+<!-- auth.component.html -->
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Login</h2>
+      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="user.email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            required
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched)  }"
+          />
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            [(ngModel)]="user.password"
+            required
+            minlength="4"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': password.invalid && (password.dirty || password.touched) }"
+          />
+          <div class="invalid-feedback">Password must be at least 4 characters.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid">Login</button>
+      </form>
+    </div>
   </div>
-
-  <label for="pwd">
-    Password
-  </label>
-  <input
-
-    required
-    minlength="4"
-    type="password"
-    ngModel name="password"
-    #pwdInput="ngModel"
-    class="form-control" id="pwd"
-  >
-  <div class="alert alert-danger" *ngIf="pwdInput.invalid && pwdInput.touched">
-    Le password doit avoir au minimum 4 caracteres
-
-  </div>
-
-  <button [disabled]="loginform.invalid" class="btn btn-primary" (click)="login()">
-    Se connecter
-  </button>
-</form>
+</div>

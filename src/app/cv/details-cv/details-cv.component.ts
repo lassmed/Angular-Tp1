@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {EmbaucheService} from "../embauche.service";
 import {Person} from "../../Models/Person";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-details-cv',
   templateUrl: './details-cv.component.html',
@@ -10,7 +10,7 @@ import {Person} from "../../Models/Person";
 export class DetailsCvComponent {
   @Input() person = new Person();
 
-  constructor(private embaucheService:EmbaucheService) {
+  constructor(private embaucheService:EmbaucheService,private router: Router) {
   }
 
   embaucher() {

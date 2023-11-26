@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Person} from "../../Models/Person";
 
 @Component({
@@ -6,8 +6,8 @@ import {Person} from "../../Models/Person";
   templateUrl: './list-cv.component.html',
   styleUrls: ['./list-cv.component.css']
 })
-export class ListCvComponent {
-  @Input() personnes : Person[] = [];
+export class ListCvComponent implements OnInit{
+  @Input() personnes : Person[]|null = [];
   @Output() selectedPersonne = new EventEmitter();
 
   selectPersonne($event: any) {
@@ -15,6 +15,8 @@ export class ListCvComponent {
     this.selectedPersonne.emit(
       $event
     );
+  }
 
+  ngOnInit(): void {
   }
 }

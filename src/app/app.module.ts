@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CvComponent } from './cv/cv/cv.component';
@@ -11,11 +11,15 @@ import { DefaultImagePipe } from './cv/default-image.pipe';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import {RouterModule} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
 import { HeaderComponent } from './header/header.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MiniWordComponent } from './mini-word/mini-word.component';
+import { CvPageComponent } from './cv/cv-page/cv-page.component';
+import {HttpClient,HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AuthService} from "./cv/auth.service";
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import { MiniWordComponent } from './mini-word/mini-word.component';
     LoginComponent,
     HeaderComponent,
     MiniWordComponent,
+    CvPageComponent,
     //HeaderComponent
   ],
   imports: [
@@ -38,8 +43,14 @@ import { MiniWordComponent } from './mini-word/mini-word.component';
     AppRoutingModule,
     FormsModule,
     ToastrModule.forRoot(),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    provideClientHydration()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

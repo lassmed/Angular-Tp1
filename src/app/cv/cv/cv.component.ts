@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CvService} from "../cv.service";
 import {CommonModule} from "@angular/common";
 import {Person} from "../../Models/Person";
+import {Observable, of} from "rxjs";
 
 
 @Component({
@@ -10,19 +11,17 @@ import {Person} from "../../Models/Person";
   styleUrls: ['./cv.component.css']
 
 })
-export class CvComponent {
-  selectedPersonne = new Person();
-  personnes: Person[] = [];
-  constructor(
-    private cvService:CvService
-  ) {
-  }
-  ngOnInit(){
-    this.personnes= this.cvService.getPersonnes();
-  }
+export class CvComponent implements OnInit{
 
-  selectPersonne($event:Person) {
-    console.log($event);
-    this.selectedPersonne =$event ;
+
+  constructor(private cvService:CvService) {}
+  personnes: Observable<Person[]>=of([]);
+  selectedPersonne!: Person;
+  ngOnInit(){
+
+    this.personnes=this.cvService.getPersonnes()  }
+
+  selectPersonne(personne:Person){
+    this.selectedPersonne=personne;
   }
 }
