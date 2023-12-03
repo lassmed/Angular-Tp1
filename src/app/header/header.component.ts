@@ -8,11 +8,13 @@ import {AuthService} from "../cv/auth.service";
 })
 export class HeaderComponent implements OnInit{
   showModal = false;
+  constructor(private authService: AuthService) {}
+
   ngOnInit() {
 
     this.authService.loadUserState();
   }
-  constructor(private authService: AuthService) {}
+
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }

@@ -16,8 +16,14 @@ export class CvService {
   constructor(private http: HttpClient,private toastr : ToastrService) {
   }
   personnes : Person[]=[];
-  getPersonnes(): Observable<Person[]> {
-    return this.http.get<Person[]>(this.apiUrl).pipe(
+
+  getPersonnes(filter?: any): Observable<Person[]> {
+
+    let params = new HttpParams();
+    if (filter) {
+      params = params.set('filter', JSON.stringify(filter));
+    }
+    return this.http.get<Person[]>(this.apiUrl,{ params }).pipe(
       tap(data => this.personnes = data),
       catchError(error => {
         console.error('Error fetching data from the API:', error);
@@ -32,8 +38,8 @@ export class CvService {
   }
   getFakePersonnes(){
     return [
-      new Person(1,'oumayma','ouerfeli',22,'assets/images/ouma.jpeg',1234,'Software Engineer'),
-      new Person(2,'mohamed','lasswed',22,'assets/images/as.jpg',1111, 'Technician'),
+      new Person(1,'oumayma','ouerfeli',22,'ouma.jpeg',1234,'Software Engineer'),
+      new Person(2,'mohamed','lasswed',22,'as.jpg',1111, 'Technician'),
       new Person(3,'ahmed','wesleti',22,'',1099, 'Web Developer')
     ];
   }

@@ -6,24 +6,37 @@ import {MiniWordComponent} from "./mini-word/mini-word.component";
 import {CvPageComponent} from "./cv/cv-page/cv-page.component";
 import {MergeScanReduceComponent} from "./merge-scan-reduce/merge-scan-reduce.component";
 import {ProductsComponent} from "./products/products.component";
+import {CvLayoutComponent} from "./cv/cv-layout/cv-layout.component";
+import {ListCvComponent} from "./cv/list-cv/list-cv.component";
+import {CvPageResolver} from "./resolvers/cv-page.resolver";
+import {CvResolver} from "./resolvers/cv.resolver";
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
-  {path:'cv',redirectTo:'/',pathMatch:'full'},
-  {path:'',component:CvComponent},
-  {path:'miniword',component:MiniWordComponent},
-  { path: 'cv/:id', component: CvPageComponent},
-  { path: 'msr', component: MergeScanReduceComponent},
-  { path: 'products', component: ProductsComponent},
+  { path: 'login', component: LoginComponent },
 
+  { path: 'cv/:id', component: CvPageComponent ,resolve: { personne: CvPageResolver }},
+  { path: 'cv', component: CvComponent,resolve: {personnes: CvResolver}},
+  { path: '', component: CvComponent , resolve: {personnes: CvResolver}},
 
+  { path: 'list' ,
+    component: CvLayoutComponent,
+    resolve: {personnes: CvResolver},
+    children:[
+      { path: '', redirectTo: '1', pathMatch: 'full' },
+      { path: ':id' ,
+        component: CvPageComponent,
+        resolve: {personne: CvPageResolver}
+      },
+    ]
+  },
 
-
-
+  { path: 'miniword', component: MiniWordComponent },
+  { path: 'msr', component: MergeScanReduceComponent },
+  { path: 'products', component: ProductsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

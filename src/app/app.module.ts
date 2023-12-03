@@ -22,6 +22,7 @@ import {AuthService} from "./cv/auth.service";
 import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
 import { MergeScanReduceComponent } from './merge-scan-reduce/merge-scan-reduce.component';
 import { ProductsComponent } from './products/products.component';
+import { CvLayoutComponent } from './cv/cv-layout/cv-layout.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ProductsComponent } from './products/products.component';
     AutocompleteComponent,
     MergeScanReduceComponent,
     ProductsComponent,
+    CvLayoutComponent,
     //HeaderComponent
   ],
   imports: [

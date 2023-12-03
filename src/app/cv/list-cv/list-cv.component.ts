@@ -10,14 +10,15 @@ export class ListCvComponent implements OnInit{
   @Input() personnes : Person[]|null = [];
   @Output() selectedPersonne = new EventEmitter();
 
-  selectPersonne($event: any) {
+
+  selectPersonne($event: Person) {
     console.log($event);
     this.selectedPersonne.emit(
       $event
     );
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
   getJuniors(): Person[]|null {
     if(this.personnes) {

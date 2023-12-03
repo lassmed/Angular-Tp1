@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CvService} from "../cv.service";
 import {CommonModule} from "@angular/common";
 import {Person} from "../../Models/Person";
-import {Observable, of} from "rxjs";
+import {map, Observable, of} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -12,14 +13,15 @@ import {Observable, of} from "rxjs";
 
 })
 export class CvComponent implements OnInit{
+  constructor(private route: ActivatedRoute) {}
 
-
-  constructor(private cvService:CvService) {}
-  personnes: Observable<Person[]>=of([]);
+  personnes$: Observable<Person[]>=of([]);
   selectedPersonne!: Person;
-  ngOnInit(){
 
-    this.personnes=this.cvService.getPersonnes()  }
+  ngOnInit(){
+    this.personnes$= this.route.data.pipe(
+      map(data => data['personnes'])
+    );  }
 
   selectPersonne(personne:Person){
     this.selectedPersonne=personne;
