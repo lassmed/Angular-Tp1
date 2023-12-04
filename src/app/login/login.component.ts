@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -10,14 +10,15 @@ import {
 } from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {AuthService} from "../cv/auth.service";
+import {AuthService, User} from "../cv/auth.service";
+import {UserLogin} from "../Models/user-login.model";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   user = {
     email: '',
     password: '',
@@ -27,7 +28,35 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router
   ) {}
-  onSubmit() {
+
+  ngOnInit(): void {
+
+  }
+
+  login(credentials: User) {
+    console.log(credentials);
+    this.authService.login(credentials).subscribe(
+      (response: any) => {
+        if ('id' in response && 'ttl' in response && 'created' in response && 'userId' in response) {
+          const userLoginResponse: UserLogin = response as UserLogin;
+          console.log(userLoginResponse);
+
+          const token = userLoginResponse.id;
+          const link = ['cv'];
+          localStorage.setItem('token', token);
+          console.log(token);
+          this.router.navigate(link);
+        } else {
+          console.error('Unexpected response format:', response);
+        }
+      },
+      (error) => {
+        console.error('Authentication failed!', error);
+      }
+    );
+  }
+
+  /*onSubmit() {
 
     const authenticationEndpoint = 'https://apilb.tridevs.net/api/Users/login';
     this.http.post(authenticationEndpoint, this.user).subscribe(
@@ -49,5 +78,5 @@ export class LoginComponent {
       }
     );
 
-  }
+  }*/
 }

@@ -1,4 +1,5 @@
-<div class="custom-container mt-4">
+
+<button (click)="loadMoreProducts()" class="custom-btn">Load More Products</button><div class="custom-container mt-4">
   <div class="custom-row">
     <div class="custom-col" *ngFor="let product of products$ | async">
       <div class="custom-card mb-4 shadow-sm">
@@ -15,5 +16,5 @@
       </div>
     </div>
   </div>
-  <button (click)="loadMoreProducts()" class="custom-btn">Load More Products</button>
+
 </div>

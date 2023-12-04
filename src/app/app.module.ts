@@ -23,6 +23,8 @@ import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component'
 import { MergeScanReduceComponent } from './merge-scan-reduce/merge-scan-reduce.component';
 import { ProductsComponent } from './products/products.component';
 import { CvLayoutComponent } from './cv/cv-layout/cv-layout.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import {LoginInterceptorProvider} from "./interceptors/login.interceptor";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { CvLayoutComponent } from './cv/cv-layout/cv-layout.component';
     MergeScanReduceComponent,
     ProductsComponent,
     CvLayoutComponent,
+    AddCvComponent,
     //HeaderComponent
   ],
   imports: [
@@ -56,7 +59,8 @@ import { CvLayoutComponent } from './cv/cv-layout/cv-layout.component';
   ],
   providers: [
     AuthService,
-    provideClientHydration()
+    provideClientHydration(),
+    LoginInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

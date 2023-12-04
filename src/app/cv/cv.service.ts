@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Person} from "../Models/Person";
 import {catchError, Observable, of, tap, throwError} from "rxjs";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 
 @Injectable({
@@ -29,7 +29,7 @@ export class CvService {
         console.error('Error fetching data from the API:', error);
         this.toastr.error('Cannot retrieve data from the API. Using fake data instead.', 'Error', {
           closeButton: true,
-          timeOut: 5000, // milliseconds
+          timeOut: 5000,
         });
 
         return of(this.getFakePersonnes());
@@ -39,7 +39,7 @@ export class CvService {
   getFakePersonnes(){
     return [
       new Person(1,'oumayma','ouerfeli',22,'ouma.jpeg',1234,'Software Engineer'),
-      new Person(2,'mohamed','lasswed',22,'as.jpg',1111, 'Technician'),
+      new Person(2,'mohamed','lasswed',22,'lass.jpg',1111, 'Technician'),
       new Person(3,'ahmed','wesleti',22,'',1099, 'Web Developer')
     ];
   }
@@ -49,6 +49,7 @@ export class CvService {
     return this.http.get<Person>(url);
   }
   deletePersonne(cvId: number): Observable<void> {
+
     const deleteUrl = `${this.apiUrl}/${cvId}`;
     return this.http.delete<void>(deleteUrl).pipe(
       tap(() => {
@@ -56,6 +57,10 @@ export class CvService {
       }),
       catchError(error => {
         console.error('Error deleting data from the API:', error);
+        this.toastr.error('Failed to delete the person. Please try again.', 'Error', {
+          closeButton: true,
+          timeOut: 5000, // milliseconds
+        });
         return of(error);
       })
     );
@@ -65,4 +70,26 @@ export class CvService {
     const params=new HttpParams().set('filter',filter);
     return this.http.get<Person[]>(this.apiUrl,{params});
   }
+
+  addPersonne(personne: Person): Observable<Person> {
+
+    return this.http.post<Person>(this.apiUrl, personne).pipe(
+      tap(newPerson => {
+        this.personnes.push(newPerson);
+        this.toastr.success('Person added successfully', 'Success', {
+          closeButton: true,
+          timeOut: 3000,
+        });
+      }),
+      catchError(error => {
+        console.error('Error adding data to the API:', error);
+        this.toastr.error('Failed to add the person. Please try again.', 'Error', {
+          closeButton: true,
+          timeOut: 5000,
+        });
+        return throwError(error);
+      })
+    );
+  }
+
 }

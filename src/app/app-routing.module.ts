@@ -10,19 +10,21 @@ import {CvLayoutComponent} from "./cv/cv-layout/cv-layout.component";
 import {ListCvComponent} from "./cv/list-cv/list-cv.component";
 import {CvPageResolver} from "./resolvers/cv-page.resolver";
 import {CvResolver} from "./resolvers/cv.resolver";
+import {AddCvComponent} from "./cv/add-cv/add-cv.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-
-  { path: 'cv/:id', component: CvPageComponent ,resolve: { personne: CvPageResolver }},
-  { path: 'cv', component: CvComponent,resolve: {personnes: CvResolver}},
   { path: '', component: CvComponent , resolve: {personnes: CvResolver}},
+  { path: 'cv', component: CvComponent,resolve: {personnes: CvResolver}},
+  { path: 'cv/add', component: AddCvComponent },
+  { path: 'cv/:id', component: CvPageComponent ,resolve: { personne: CvPageResolver }},
+
+
 
   { path: 'list' ,
     component: CvLayoutComponent,
     resolve: {personnes: CvResolver},
     children:[
-      { path: '', redirectTo: '1', pathMatch: 'full' },
       { path: ':id' ,
         component: CvPageComponent,
         resolve: {personne: CvPageResolver}
