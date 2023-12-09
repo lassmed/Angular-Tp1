@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Person} from "../Models/Person";
+import {Person} from "../../Models/Person";
 import {catchError, Observable, of, tap, throwError} from "rxjs";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
@@ -48,12 +48,16 @@ export class CvService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Person>(url);
   }
-  deletePersonne(cvId: number): Observable<void> {
 
+  deletePersonne(cvId: number): Observable<void> {
     const deleteUrl = `${this.apiUrl}/${cvId}`;
+
     return this.http.delete<void>(deleteUrl).pipe(
       tap(() => {
-        //this.personnes = this.personnes.filter(person => person.id !== cvId);
+        this.toastr.success('Person deleted successfully', 'Success', {
+          closeButton: true,
+          timeOut: 3000,
+        });
       }),
       catchError(error => {
         console.error('Error deleting data from the API:', error);
@@ -65,6 +69,7 @@ export class CvService {
       })
     );
   }
+
   findByName(name:string) : Observable<Person[]>{
     const filter = `{"where":{"name":{"like":"%${name}%"}}}`;
     const params=new HttpParams().set('filter',filter);
@@ -92,4 +97,7 @@ export class CvService {
     );
   }
 
+  updatePersonne(p: Person) {
+    return this.http.patch(this.apiUrl, p);
+  }
 }

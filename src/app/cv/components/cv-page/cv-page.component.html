@@ -26,8 +26,11 @@
         <p class="fs-5">{{personne.cin}}</p>
       </div>
     </div>
-    <div class="col-12 d-flex justify-content-center mt-3">
-      <button (click)="deletePersonne()" routerLink="" class="btn btn-danger">Delete</button>
+    <div class="footer">
+      <div class="text-center">
+        <button *ngIf="isLoggedIn()"  (click)="deletePersonne()" routerLink="" class="btn btn-danger">Delete</button>
+        <button *ngIf="isLoggedIn()"  [routerLink]="'/cv/update/' + personne.id"  class="btn btn-primary">Update</button>
+      </div>
     </div>
   </div>
 </div>

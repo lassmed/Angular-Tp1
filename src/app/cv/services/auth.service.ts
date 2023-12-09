@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {HttpClient} from "@angular/common/http";
-import {UserLogin} from "../Models/user-login.model";
+import {UserLogin} from "../../Models/user-login.model";
 @Injectable({
   providedIn: 'root',
 })
@@ -32,10 +32,10 @@ export class AuthService {
   }
 
   login(user: User) {
-    /*
-       /localStorage.setItem('currentUser', JSON.stringify(user));
+
+       localStorage.setItem('currentUser', JSON.stringify(user));
         this.subject.next(user);
-        */
+
      return this.http.post(this.authenticationEndpoint,user);
   }
 

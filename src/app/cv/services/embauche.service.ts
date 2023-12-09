@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Person} from "../Models/Person";
+import {Person} from "../../Models/Person";
 import {ToastrService} from "ngx-toastr";
 
 @Injectable({

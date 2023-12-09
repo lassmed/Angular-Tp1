@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from "../../Models/Person";
+import {Person} from "../../../Models/Person";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CvService} from "../cv.service";
+import {CvService} from "../../services/cv.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-cv-page',
@@ -10,7 +11,7 @@ import {CvService} from "../cv.service";
 })
 export class CvPageComponent implements OnInit{
   personne!:Person;
-  constructor(private activatedRoute: ActivatedRoute, private cvService: CvService ,private router:Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private cvService: CvService ,private router:Router , private authService: AuthService) { }
 
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
@@ -31,5 +32,9 @@ export class CvPageComponent implements OnInit{
     }
   }
 
+  isLoggedIn(): boolean {
+    console.log(this.authService.isLoggedIn())
+    return this.authService.isLoggedIn();
+  }
 
 }

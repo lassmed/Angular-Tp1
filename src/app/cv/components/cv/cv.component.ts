@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CvService} from "../cv.service";
+import {CvService} from "../../services/cv.service";
 import {CommonModule} from "@angular/common";
-import {Person} from "../../Models/Person";
+import {Person} from "../../../Models/Person";
 import {map, Observable, of} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 

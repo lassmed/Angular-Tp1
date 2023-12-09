@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {EmbaucheService} from "../embauche.service";
+import {EmbaucheService} from "../../services/embauche.service";
 import {CommonModule} from "@angular/common";
-import {Person} from "../../Models/Person";
+import {Person} from "../../../Models/Person";
 
 @Component({
   selector: 'app-embauche',

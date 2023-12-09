@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {EmbaucheService} from "../embauche.service";
-import {Person} from "../../Models/Person";
+import {EmbaucheService} from "../../services/embauche.service";
+import {Person} from "../../../Models/Person";
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-details-cv',

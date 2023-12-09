@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Person} from "../Models/Person";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {CvService} from "../cv/cv.service";
+import {CvService} from "../cv/services/cv.service";
 import {Observable} from "rxjs";
 
 @Injectable({

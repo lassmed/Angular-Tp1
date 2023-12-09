@@ -10,7 +10,7 @@ import {
 } from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {AuthService, User} from "../cv/auth.service";
+import {AuthService, User} from "../cv/services/auth.service";
 import {UserLogin} from "../Models/user-login.model";
 
 @Component({

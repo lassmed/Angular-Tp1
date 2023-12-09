@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Person} from "../../Models/Person";
+import {Person} from "../../../Models/Person";
 
 @Component({
   selector: 'app-list-cv',

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from "../../Models/Person";
+import {Person} from "../../../Models/Person";
 import {map, Observable, of} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
