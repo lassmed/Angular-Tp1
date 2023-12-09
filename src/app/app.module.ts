@@ -11,7 +11,7 @@ import { EmbaucheComponent } from './cv/components/embauche/embauche.component';
 import {RouterModule} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {LoginComponent} from "./login/login.component";
+import {LoginComponent} from "./auth/login/login.component";
 import { HeaderComponent } from './header/header.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MiniWordComponent } from './mini-word/mini-word.component';
@@ -27,28 +27,19 @@ import { AddCvComponent } from './cv/components/add-cv/add-cv.component';
 import {LoginInterceptorProvider} from "./interceptors/login.interceptor";
 import {UnsavedChangesGuard} from "./guards/unsavedChnages.guard";
 import {LoginGuard} from "./guards/login.guard";
+import {CvModule} from "./cv/cv.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CvComponent,
-    DetailsCvComponent,
-    ListCvComponent,
-    ItemCvComponent,
-    DefaultImagePipe,
-    EmbaucheComponent,
-    LoginComponent,
     HeaderComponent,
     MiniWordComponent,
-    CvPageComponent,
-    AutocompleteComponent,
     MergeScanReduceComponent,
     ProductsComponent,
-    CvLayoutComponent,
-    AddCvComponent,
     //HeaderComponent
   ],
   imports: [
+    CvModule,
     BrowserModule,
     CommonModule,
     RouterModule,
